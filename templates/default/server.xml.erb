@@ -121,6 +121,12 @@
                redirectPort="<%= @ssl_port %>" />
   <% end -%>
 
+    <% if node.tomcat.jmx_remote %>
+    <!-- JMX Remote Lifecycle Listener helps access JMX when behind a firewall -->
+    <Listener className="org.apache.catalina.mbeans.JmxRemoteLifecycleListener"
+               rmiRegistryPortPlatform="10001" rmiServerPortPlatform="10002" />
+    <% end %>
+
     <!-- An Engine represents the entry point (within Catalina) that processes
          every request.  The Engine implementation for Tomcat stand alone
          analyzes the HTTP headers included with the request, and passes them

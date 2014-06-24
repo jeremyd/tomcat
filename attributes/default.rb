@@ -47,6 +47,8 @@ default['tomcat']['loglevel'] = 'INFO'
 default['tomcat']['tomcat_auth'] = 'true'
 default['tomcat']['instances'] = {}
 default['tomcat']['run_base_instance'] = true
+default['tomcat']['jmx_remote'] = 'false'
+default['tomcat']['catalina_jmx_remote_version'] = '8.0.8'
 
 case node['platform']
 

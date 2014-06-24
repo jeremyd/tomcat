@@ -48,6 +48,12 @@ tomcat_pkgs.each do |pkg|
   end
 end
 
+if node.tomcat.jmx_remote
+  remote_file "/usr/share/tomcat7/lib/tomcat-catalina-jmx-remote.jar" do
+    source "http://central.maven.org/maven2/org/apache/tomcat/tomcat-catalina-jmx-remote/#{node.tomcat.catalina_jmx_remote_version}/tomcat-catalina-jmx-remote-#{node.tomcat.catalina_jmx_remote_version}.jar"
+  end
+end
+
 unless node['tomcat']['deploy_manager_apps']
   directory "#{node['tomcat']['webapp_dir']}/manager" do
     action :delete
